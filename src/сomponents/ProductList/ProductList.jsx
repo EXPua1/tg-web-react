@@ -34,7 +34,7 @@ const products = [
                 queryId,
 
             }
-            fetch('http://localhost:3000', {
+            fetch('https://cosmic-pastelito-ec955f.netlify.app/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
