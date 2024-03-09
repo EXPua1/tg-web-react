@@ -34,15 +34,15 @@ const products = [
                 queryId,
 
             }
-            fetch('http://localhost:8000', {
+            fetch('http://localhost:3000', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
             })
-            //tg.sendData(JSON.stringify(data));
-        }, [])
+
+        }, [addedItems])
 
         useEffect(() => {
             tg.onEvent('mainButtonClicked', onSendData)
