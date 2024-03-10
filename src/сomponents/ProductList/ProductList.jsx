@@ -34,7 +34,7 @@ const ProductList = () => {
             queryId,
 
         }
-        fetch('http://34.82.221.250:8000/web-data', {
+        fetch('http://35.247.72.229:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
