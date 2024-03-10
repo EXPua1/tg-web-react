@@ -34,7 +34,7 @@ const products = [
                 queryId,
 
             }
-            fetch('http://localhost:3000', {
+            fetch('http://34.83.26.122', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
