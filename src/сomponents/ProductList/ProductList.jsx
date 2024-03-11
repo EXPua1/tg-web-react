@@ -28,6 +28,7 @@ const ProductList = () => {
 
 
     const onSendData = useCallback(() => {
+        console.log('Отправка данных на сервер...');
         const data = {
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
@@ -45,10 +46,10 @@ const ProductList = () => {
                 if (!response.ok) {
                     throw new Error('Failed to send data to server');
                 }
-                console.log('Data sent successfully');
+                console.log('Данные успешно отправлены на сервер');
             })
             .catch(error => {
-                console.error('Error sending data to server:', error);
+                console.error('Ошибка отправки данных на сервер:', error);
             });
     }, [addedItems, queryId]);
 
