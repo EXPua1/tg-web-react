@@ -27,22 +27,30 @@ const ProductList = () => {
     const {tg, queryId} = useTelegram();
 
 
-    const onSendData = useCallback(()=>{
+    const onSendData = useCallback(() => {
         const data = {
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
             queryId,
+        };
 
-        }
         fetch('https://35.247.72.229:8081/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
         })
-
-    }, [addedItems])
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to send data to server');
+                }
+                console.log('Data sent successfully');
+            })
+            .catch(error => {
+                console.error('Error sending data to server:', error);
+            });
+    }, [addedItems, queryId]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
