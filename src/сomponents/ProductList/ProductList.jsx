@@ -30,15 +30,25 @@ const ProductList = () => {
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
             queryId,
-        }
-        fetch('\'http://34.168.57.4:8080/web-data', {
+        };
+
+        fetch('http://34.168.57.4:8080/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-    }, [addedItems])
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to send data to server');
+                }
+                console.log('Данные успешно отправлены на сервер');
+            })
+            .catch(error => {
+                console.error('Ошибка отправки данных на сервер:', error);
+            });
+    }, [addedItems, queryId]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
